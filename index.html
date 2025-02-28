@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SyP Suplementos - Potenciá tu rendimiento con nuestros suplementos de calidad.">
+<meta name="keywords" content="suplementos, proteína, creatina, fitness, salud">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/svg+xml" href="logo.png">
+<title>SyP Suplementos</title>
+<style>
+  /* Estilos CSS */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #1e1e1e;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .logo {
+    height: 60px;
+    cursor: pointer;
+    margin-right: 1px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-right: 90px;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 20px;
+  }
+  .nav-links a:hover {
+    color: #00ff66;
+  }
+  .cart-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    margin-right: 20px;
+  }
+  .cart-count {
+    background-color: #00ff66;
+    color: black;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+  .product {
+    background-color: #1e1e1e;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
+  }
+  .product img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .buy-button {
+    background-color: #00ff66;
+    color: black;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    width: 180px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  footer {
+    background-color: #1e1e1e;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    border-top: 2px solid #00ff66;
+  }
+  footer p {
+    margin: 5px 0;
+  }
+  .social-icons {
+    margin-top: 10px;
+  }
+  .social-icons a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+    }
+    .nav-links a {
+      margin: 10px 0;
+    }
+    .product {
+      width: 90%;
+    }
+  }
+  @media (max-width: 480px) {
+    .logo {
+      height: 50px;
+    }
+    .nav-links a {
+      font-size: 16px;
+    }
+    .cart-icon {
+      font-size: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="logoheader.png" alt="SyP Suplementos" class="logo" onclick="window.location='index.html';">
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="https://web.whatsapp.com/send?phone=1123264669" target="_blank">Contacto</a>
+    </div>
+    <span class="cart-icon" onclick="window.location='carrito.html';">🛒 <span class="cart-count" id="cart-count">0</span></span>
+  </header>
+<div class="container">
+  <div id="productos" class="productos-container">
+    <div class="product">
+      <img src="proteena.png" alt="Proteína ENA 1KG">
+      <h3>Proteína ENA 1KG</h3>
+      <p>$35.000</p>
+      <button class="buy-button" onclick="addToCart('Proteína ENA 1KG', 35000, 'proteena.png')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+      <img src="protestar.png" alt="Proteína STAR 1KG">
+      <h3>Proteína STAR 1KG</h3>
+      <p>$33.500</p>
+      <button class="buy-button" onclick="addToCart('Proteína STAR 1KG', 33500, 'protestar.png')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+      <img src="creaena.png" alt="Creatina ENA 300G">
+      <h3>Creatina ENA 300G</h3>
+      <p>$30.000</p>
+      <button class="buy-button" onclick="addToCart('Creatina ENA 300G', 30000, 'creaena.png')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+      <img src="ultramassena.png" alt="Ultra Mass ENA 3KG">
+      <h3>Ultra Mass ENA 3KG</h3>
+      <p>$48.000</p>
+      <button class="buy-button" onclick="addToCart('Ultra Mass ENA 3KG', 48000, 'ultramassena.png')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+      <img src="Creastar.png" alt="Creatina STAR 300G">
+      <h3>Creatina STAR 300G</h3>
+      <p>$30.000</p>
+      <button class="buy-button" onclick="addToCart('Creatina STAR 300G', 30000, 'Creastar.png')">Agregar al carrito</button>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>📍 Hacé tu pedido hoy y llevá tu entrenamiento al siguiente nivel.</p>
+  <div class="social-icons">
+    <a href="https://web.whatsapp.com/send?phone=1123264669" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 40px; height: 40px;">
+    </a>
+    <a href="https://www.instagram.com/spvsuplementos/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 40px; height: 40px;">
+    </a>
+  </div>
+</footer>
+
+<script>
+  let cartCount = 0;
+  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  function addToCart(name, price, image) {
+    cartItems.push({ name, price, image });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    cartCount++;
+    document.getElementById('cart-count').innerText = cartCount;
+    alert(`¡${name} se ha agregado al carrito!`);
+  }
+
+  // Cargar los productos del carrito al iniciar
+  cartCount = cartItems.length;
+  document.getElementById('cart-count').innerText = cartCount;
+
+  // Agregar transición al desplazamiento a la sección de productos
+  document.querySelectorAll('a[href="#productos"]').forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const productsSection = document.getElementById('productos');
+      productsSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
