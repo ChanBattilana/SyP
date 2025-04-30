@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluación de Teoría de Sistemas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #333;
+    }
+    .pregunta {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .resultado {
+      margin-top: 30px;
+      padding: 20px;
+      border: 2px solid #007bff;
+      border-radius: 8px;
+      background-color: #e6f0ff;
+    }
+    .correcta {
+      color: green;
+    }
+    .incorrecta {
+      color: red;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Cuestionario de Teoría de Sistemas</h1>
+<form id="formulario">
+  <!-- Las preguntas se insertarán con JavaScript -->
+</form>
+<button onclick="corregir()">Corregir</button>
+<div id="resultado" class="resultado"></div>
+
+<script>
+  const preguntas = [
+  {
+    texto: "1. La entropía es una característica de los sistemas que da cuenta de:",
+    opciones: ["La tendencia al caos de estos.", "La tendencia de los sistemas a una finalidad.", "La búsqueda del equilibrio dinámico.", "La capacidad de autoorganización."],
+    correcta: 0
+  },
+  {
+    texto: "2. El concepto de sinergia refiere a:",
+    opciones: ["El input de un sistema.", "El resultado de una actividad aleatoria.", "La dinámica y el resultado de un sistema.", "Todas las opciones.", "Los elementos del conjunto que interactúan."],
+    correcta: 2
+  },
+  {
+    texto: "3. La cibernética aborda:",
+    opciones: ["Los sistemas mecánicos y dinámicos.", "Los sistemas cerrados de comunicación.", "La comunicación y el control en los sistemas cerrados.", "La comunicación y el control para lograr coherencia en los sistemas."],
+    correcta: 3
+  },
+  {
+    texto: "4. La teoría de sistemas es funcional a:",
+    opciones: ["El estudio de los mecanismos.", "No aplica a la disciplina de la administración.", "Un simple abordaje de fenómenos externos.", "Un entendimiento más completo de las organizaciones."],
+    correcta: 3
+  },
+  {
+    texto: "5. La propiedad entrópica lleva a los sistemas a:",
+    opciones: ["Ninguna de las opciones.", "Depende de la tendencia del sistema.", "Su evolución.", "Su expansión.", "Su destrucción."],
+    correcta: 4
+  },
+  {
+    texto: "6. Las organizaciones son sistemas complejos porque:",
+    opciones: ["Son sistemas de variables que adoptan un único estado.", "Ninguna de las opciones.", "Son sistemas de elementos interrelacionados.", "Tienen un gran número de elementos.", "Son un conjunto de múltiples relaciones."],
+    correcta: 2
+  },
+  {
+    texto: "7. La homeóstasis es una característica de los sistemas que explica:",
+    opciones: ["Los cambios en la estructura del sistema.", "El equilibrio dinámico de los mismos.", "El equilibrio estático del sistema.", "La disonancia del sistema."],
+    correcta: 1
+  },
+  {
+    texto: "8. La complejidad en un sistema da cuenta de:",
+    opciones: ["La entropía.", "El número de variables y relaciones que lo componen.", "El equilibrio homeostático.", "La dificultad para el análisis.", "La viabilidad del mismo."],
+    correcta: 1
+  },
+  {
+    texto: "9. La complejidad refiere a:",
+    opciones: ["Fenómenos observables y altamente predecibles.", "Múltiples relaciones y múltiples estados de las variables.", "Múltiples causas para el estado actual del sistema y una resultante.", "Fenómenos mono causales."],
+    correcta: 1
+  },
+  {
+    texto: "10. En la teoría situacional, la lógica de sistema cerrado aplica a:",
+    opciones: ["El flujo de trabajo que idealmente debería ser constante.", "Las relaciones interpersonales que pueden ser fuentes de conflicto.", "Los intercambios con el ambiente.", "Los flujos de trabajo para imponer la interdependencia."],
+    correcta: 0
+  },
+  {
+    texto: "11. En la teoría situacional, la lógica de sistema abierto se relaciona con:",
+    opciones: ["La variabilidad del entorno y la incertidumbre.", "La lógica funcional.", "Las tareas repetitivas.", "La producción en masa."],
+    correcta: 0
+  },
+  {
+    texto: "12. El análisis organizacional incluye:",
+    opciones: ["El estudio de las relaciones humanas.", "El estudio de la cultura organizacional.", "El estudio de las estructuras y procesos.", "Todas las opciones."],
+    correcta: 3
+  },
+  {
+    texto: "13. La racionalidad limitada implica:",
+    opciones: ["Que las personas siempre toman decisiones óptimas.", "Que la información disponible es limitada.", "Que se pueden considerar todas las alternativas posibles.", "Que las decisiones se toman en contextos ideales."],
+    correcta: 1
+  },
+  {
+    texto: "14. Según Kahneman, los sesgos cognitivos afectan:",
+    opciones: ["La motivación del individuo.", "La evaluación objetiva de la realidad.", "La estructura organizacional.", "La planificación estratégica."],
+    correcta: 1
+  },
+  {
+    texto: "15. El equilibrio organizacional refiere a:",
+    opciones: ["La capacidad de resistir al cambio.", "La relación entre las contribuciones y las recompensas.", "El orden jerárquico.", "La estabilidad del entorno."],
+    correcta: 1
+  },
+  {
+    texto: "16. El conflicto puede ser:",
+    opciones: ["Disfuncional.", "Funcional.", "Evitable.", "Funcional o disfuncional."],
+    correcta: 3
+  },
+  {
+    texto: "17. El ciclo de vida de una empresa incluye:",
+    opciones: ["Nacimiento, crecimiento, madurez, declive.", "Inicio, apogeo, cierre.", "Apertura, estabilidad, innovación.", "Ninguna es correcta."],
+    correcta: 0
+  },
+  {
+    texto: "18. En la teoría general de sistemas, un sistema es:",
+    opciones: ["Una parte de otro sistema.", "Una unidad cerrada.", "Un conjunto de elementos interrelacionados.", "Una unidad simple."],
+    correcta: 2
+  },
+  {
+    texto: "19. La teoría de la contingencia plantea que:",
+    opciones: ["Todas las organizaciones deben estructurarse igual.", "No existe una única forma correcta de organizarse.", "La estructura depende del líder.", "No considera el entorno."],
+    correcta: 1
+  },
+  {
+    texto: "20. La empresa como sistema complejo:",
+    opciones: ["Se analiza solo desde la economía.", "Requiere múltiples disciplinas para comprenderla.", "Tiene pocos elementos.", "Es predecible y estable."],
+    correcta: 1
+  },
+  {
+    texto: "21. En un sistema abierto, la organización:",
+    opciones: ["Es independiente del entorno.", "No intercambia recursos con el medio.", "Interactúa con el entorno.", "No necesita adaptarse."],
+    correcta: 2
+  },
+  {
+    texto: "22. El concepto de entropía en sistemas se refiere a:",
+    opciones: ["La capacidad de adaptarse.", "El orden interno.", "La tendencia al desorden si no hay intercambio con el entorno.", "La eficiencia organizacional."],
+    correcta: 2
+  },
+  {
+    texto: "23. Según la teoría de la contingencia, una organización eficaz es aquella que:",
+    opciones: ["Tiene la estructura más grande.", "Se adapta mejor a su entorno.", "Tiene menos empleados.", "Usa tecnología avanzada."],
+    correcta: 1
+  },
+  {
+    texto: "24. ¿Qué autor propuso el concepto de racionalidad limitada?",
+    opciones: ["Peter Drucker", "Max Weber", "Herbert Simon", "Elton Mayo"],
+    correcta: 2
+  },
+  {
+    texto: "25. El enfoque de sistema abierto:",
+    opciones: ["Considera que la empresa es un sistema aislado.", "Considera solo la estructura interna.", "Considera la interacción entre la empresa y su entorno.", "No considera la adaptación."],
+    correcta: 2
+  },
+  {
+    texto: "26. El enfoque sistémico aporta:",
+    opciones: ["Una mirada reduccionista.", "Una visión fragmentada de la empresa.", "Una comprensión integral e interrelacionada.", "Una visión simplificada."],
+    correcta: 2
+  },
+  {
+    texto: "27. Los sesgos cognitivos, según Kahneman:",
+    opciones: ["Son errores lógicos intencionales.", "Afectan la percepción y toma de decisiones.", "Se dan solo en grupos.", "No afectan a los gerentes."],
+    correcta: 1
+  },
+  {
+    texto: "28. En la teoría general de sistemas, el entorno:",
+    opciones: ["No influye en el sistema.", "Es parte del sistema.", "Es externo pero influye en el sistema.", "No se analiza."],
+    correcta: 2
+  },
+  {
+    texto: "29. La empresa como sistema complejo se caracteriza por:",
+    opciones: ["Ser predecible y estable.", "Tener pocos componentes.", "Tener múltiples elementos interrelacionados e influencias cruzadas.", "Ser solo económica."],
+    correcta: 2
+  },
+  {
+    texto: "30. El conflicto en las organizaciones puede:",
+    opciones: ["Ser siempre negativo.", "Ser útil si se gestiona adecuadamente.", "Ser evitado completamente.", "Generar desorden inevitable."],
+    correcta: 1
+  },
+  {
+    texto: "31. ¿Qué característica tiene una organización considerada como sistema?",
+    opciones: ["No se adapta.", "No tiene componentes.", "Está compuesta por partes interrelacionadas.", "Es rígida y estática."],
+    correcta: 2
+  },
+  {
+    texto: "32. Según el enfoque de la contingencia:",
+    opciones: ["Existe una única manera correcta de organizarse.", "La mejor estructura depende del contexto.", "La burocracia es el modelo ideal.", "Todos los entornos son iguales."],
+    correcta: 1
+  },
+  {
+    texto: "33. La racionalidad limitada implica que:",
+    opciones: ["Siempre tomamos decisiones óptimas.", "Tenemos acceso a toda la información.", "Las decisiones se toman con información y tiempo limitados.", "Los sesgos no influyen."],
+    correcta: 2
+  },
+  {
+    texto: "34. La teoría general de sistemas fue desarrollada por:",
+    opciones: ["Weber", "Bertalanffy", "Simon", "Fayol"],
+    correcta: 1
+  },
+  {
+    texto: "35. En el ciclo de vida de la empresa, la etapa de madurez se caracteriza por:",
+    opciones: ["Alta mortalidad empresarial.", "Estabilidad y consolidación.", "Caos y desorden.", "Ninguna estructura."],
+    correcta: 1
+  },
+  {
+    texto: "36. El enfoque sistémico considera:",
+    opciones: ["Solo los objetivos económicos.", "Las relaciones entre las partes y el entorno.", "Solo la estructura jerárquica.", "A la empresa como una unidad cerrada."],
+    correcta: 1
+  },
+  {
+    texto: "37. ¿Qué propone Kahneman en su teoría sobre decisiones?",
+    opciones: ["Las personas deciden de manera lógica y fría.", "Las decisiones son automáticas y muchas veces sesgadas.", "No existen errores de juicio.", "Las emociones no influyen."],
+    correcta: 1
+  }
+];
+
+  const formulario = document.getElementById("formulario");
+
+  preguntas.forEach((pregunta, index) => {
+    const div = document.createElement("div");
+    div.className = "pregunta";
+    div.innerHTML = `<h2>${pregunta.texto}</h2>` + pregunta.opciones.map((op, i) =>
+      `<label><input type="radio" name="pregunta${index}" value="${i}"> ${op}</label><br>`
+    ).join('');
+    formulario.appendChild(div);
+  });
+
+  function corregir() {
+    let correctas = 0;
+    let resultadoHTML = "<h2>Resultados:</h2><ul>";
+    preguntas.forEach((pregunta, i) => {
+      const seleccionada = document.querySelector(`input[name=pregunta${i}]:checked`);
+      if (!seleccionada) {
+        resultadoHTML += `<li class="incorrecta">Pregunta ${i+1}: No respondida.</li>`;
+        return;
+      }
+      const valor = parseInt(seleccionada.value);
+      if (valor === pregunta.correcta) {
+        resultadoHTML += `<li class="correcta">Pregunta ${i+1}: Correcta ✅</li>`;
+        correctas++;
+      } else {
+        resultadoHTML += `<li class="incorrecta">Pregunta ${i+1}: Incorrecta ❌ (Correcta: ${pregunta.opciones[pregunta.correcta]})</li>`;
+      }
+    });
+    resultadoHTML += `</ul><h3>Obtuviste ${correctas} de ${preguntas.length} correctas.</h3>`;
+    document.getElementById("resultado").innerHTML = resultadoHTML;
+  }
+</script>
+
+</body>
+</html>
